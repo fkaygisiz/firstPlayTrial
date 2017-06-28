@@ -1,41 +1,42 @@
-# --- First database schema
-
 # --- !Ups
 
-create table company (
-  id                        bigint not null,
-  name                      varchar(255),
-  constraint pk_company primary key (id))
-;
+create table sample_model (
+  id                bigint not null,
+  name              text,
+  constraint pk_sample_model primary key (id)
+);
 
-create table computer (
-  id                        bigint not null,
-  name                      varchar(255),
-  introduced                timestamp,
-  discontinued              timestamp,
-  company_id                bigint,
-  constraint pk_computer primary key (id))
-;
+create sequence sample_model_seq;
 
-create sequence company_seq start with 1000;
+create table apartment_type (
+  id                bigint not null,
+  name              text,
+  constraint pk_apartment_type primary key (id)
+);
 
-create sequence computer_seq start with 1000;
+create sequence apartment_type_seq;
 
-alter table computer add constraint fk_computer_company_1 foreign key (company_id) references company (id) on delete restrict on update restrict;
-create index ix_computer_company_1 on computer (company_id);
+create table apartment (
+  id                bigint not null,
+  name              text,
+  apartment_type_id bigint,
+  constraint pk_apartment primary key (id)
+);
 
+create sequence apartment_seq;
+
+alter table apartment add constraint fk_apartment_apartment_type foreign key (apartment_type_id) references apartment (id) on delete restrict on update restrict;
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+drop table if exists sample_model;
 
-drop table if exists company;
+drop sequence if exists sample_model_seq;
 
-drop table if exists computer;
+drop table if exists apartment;
 
-SET REFERENTIAL_INTEGRITY TRUE;
+drop sequence if exists apartment_seq;
 
-drop sequence if exists company_seq;
+drop table if exists apartment_type;
 
-drop sequence if exists computer_seq;
-
+drop sequence if exists apartment_type_seq;
