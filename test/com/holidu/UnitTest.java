@@ -1,4 +1,4 @@
-package com.holidu.com.holidu;
+package com.holidu;
 
 import org.junit.Test;
 
