@@ -18,7 +18,7 @@ import java.util.Random;
 public class ElasticsearchService {
 
     private static final String CLUSTER_NAME = "holidu-interview";
-    private static final String NODE_IP = "54.194.224.195";
+    private static final String NODE_IP = "52.214.199.196";
     private static final int PORT = 9300;
 
     private static Client client;
