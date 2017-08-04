@@ -15,6 +15,14 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Random;
 
+/**
+ * ES client connected to a Holidu's elasticsearch instance,
+ * Please be gentle with her.
+ * <p>
+ * Technically you should not need to change anything here
+ *
+ * @version 1.0.0
+ */
 public class ElasticsearchService {
 
     private static final String CLUSTER_NAME = "holidu-interview";
@@ -51,6 +59,13 @@ public class ElasticsearchService {
         Logger.info("Created ElasticsearchService " + random);
     }
 
+    @Inject
+    public ElasticsearchService(ApplicationLifecycle lifecycle) {
+        lifecycle.addStopHook(() -> {
+            ElasticsearchService.shutdown();
+            return null;
+        });
+    }
 
     public static Client get() {
         Logger.info("Getting client from " + random);
@@ -60,13 +75,5 @@ public class ElasticsearchService {
     private static void shutdown() {
         Logger.info("Setting client to null");
         client = null;
-    }
-
-    @Inject
-    public ElasticsearchService(ApplicationLifecycle lifecycle) {
-        lifecycle.addStopHook(() -> {
-            ElasticsearchService.shutdown();
-            return null;
-        });
     }
 }

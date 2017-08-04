@@ -12,6 +12,16 @@ https://github.com/playframework/play-java-ebean-example
 2. Execute `sbt`
 3. After the project is loaded execute `run`
 4. Open `localhost:9000` in your browser
+5. You may be prompted by the apply evolutions screen, simply press `Apply this script now!`. If everything is up 
+and running smoothly, you will see the holidu welcome response
+
+```
+{
+  title: "Holidu Search Challenge",
+  version: "1"
+}
+```
+
 
 ## Coding
 Usually you don't have to stop and start the application while you are implementing the features.
@@ -78,16 +88,19 @@ curl -XPOST 'http://54.194.224.195:9200/sample_index/_search?pretty' -d '{
 }'
 ```
 
-## Tasks
+## Scoring
 
-### `Ideas
-prepare apartment database + indexing methods, give the task to add new fields to elasticsearch mapping
+### Things to keep in mind
+1. Write clean code. Document where ever you feel it is necessary to explain something.
+2. Tests are always welcome ! They put a smile on our face :)
+3. Do not re-invent the wheel.
+4. Simpler is better.
+5. Some major points to remember from the Zen of Python
 
-give empty evolution 3.sql and ask to add a field
-
-add a button with "like" or "favorite", candidate needs to add field to database and to elasticsearch + api call to increment the favorite counter
-based on the number of favorites/likes their could be  scoring function
-
-add some bad styled code, wrong naming and bugs and see if the candidate touches them or not (we could state that improvements to the existing codes are allowed/wanted)
-
-add apartment dto, map from model to dto, index dto to elasticsearch, create search controller
+```
+...
+Beautiful is better than ugly.
+Simple is better than complex.
+Complex is better than complicated.
+...
+```
