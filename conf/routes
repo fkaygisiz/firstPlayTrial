@@ -2,11 +2,11 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                           controllers.HomeController.index()
+GET         /                        controllers.HomeController.index()
 
-GET     /sample/index/:id           controllers.SampleController.index(id:Long)
-GET     /sample/search              controllers.SampleController.searchByName(name:String)
-GET     /sample/:id                 controllers.SampleController.getById(id:Long)
-POST    /sample                     controllers.SampleController.post()
+GET         /sample/index/:id        controllers.SampleController.index(id:Long)
+GET         /sample/search           controllers.SampleController.search()
+GET         /sample/:id              controllers.SampleController.getById(id:Long)
+POST        /sample                  controllers.SampleController.post()
 
 # Add more routes as you require below

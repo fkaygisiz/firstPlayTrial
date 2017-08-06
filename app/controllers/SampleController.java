@@ -5,7 +5,6 @@ import models.SampleModel;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import play.libs.Json;
@@ -44,11 +43,9 @@ public class SampleController extends Controller {
         return ok(indexResponse.toString());
     }
 
-    public Result searchByName(String name) {
+    public Result search() {
         SearchResponse searchResponse = ElasticsearchService.get()
                 .prepareSearch("sample_index")
-                .setQuery(QueryBuilders
-                        .matchQuery("name", name))
                 .get();
 
         SearchHits searchHits = searchResponse.getHits();
