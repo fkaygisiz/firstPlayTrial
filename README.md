@@ -70,7 +70,7 @@ curl -XGET 'localhost:9000/sample/search?name=first'
 
 ```
 # Search documents in Elasticsearch directly where every document matches
-curl -XPOST 'http://54.194.224.195:9200/sample_index/_search?pretty' -d '{
+curl -XPOST 'http://search-challange.holidu.com:9200/sample_index/_search?pretty' -d '{
     "query": {
         "match_all": {}
     }
@@ -79,7 +79,7 @@ curl -XPOST 'http://54.194.224.195:9200/sample_index/_search?pretty' -d '{
 
 ```
 # Search documents in Elasticsearch directly where the name contains 'first'
-curl -XPOST 'http://54.194.224.195:9200/sample_index/_search?pretty' -d '{
+curl -XPOST 'http://search-challange.holidu.com:9200/sample_index/_search?pretty' -d '{
     "query" : {
         "match": {
             "name": "first"
