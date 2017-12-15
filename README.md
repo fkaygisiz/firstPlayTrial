@@ -26,7 +26,9 @@ and running smoothly, you will see the holidu welcome response
 ## Coding
 Usually you don't have to stop and start the application while you are implementing the features.
 Just safe the code and refresh the page in the browser.
+
 But in case you experience some weird issues you should stop the application (CTRL+D) and execute `run` again.
+
 NOTE: CTRL+C will also stop sbt and you need to execute `sbt` again and afterwards `run`.
 
 ## Testing
@@ -39,37 +41,40 @@ test-only com.holidu.SampleModelTest
 ```
 
 ## IDE
-Intellij
+We suggest using IntelliJ Ultimate e.g. as a free 30 days trial.
 
-## Sample
-There is a SampleModel to demonstrate the usage of Ebean.
-There is a SampleController to demonstrate the usage of routes and Elasticsearch.
+## Samples
+There is a `SampleModel` to demonstrate the usage of Ebean.
 
+There is a `SampleController` to demonstrate the usage of routes and Elasticsearch.
+
+Get sample by id from the database:
 ```
-# Get sample by id from the database
 curl -XGET 'localhost:9000/sample/1'
-``
+```
+
+
+Add a new sample to the database (if you use Postman you need to specify the Content-Type header to application/json):
 
 ```
-# Add a new sample to the database (if you use Postman you need to specify the Content-Type header to application/json)
 curl -XPOST -H "Content-Type: application/json" 'localhost:9000/sample' -d '{
     "id": 4,
     "name": "second sample"
 }'
-``
-
 ```
-# Index a sample from the database to Elasticsearch
+
+Index a sample from the database to Elasticsearch:
+```
 curl -XGET 'localhost:9000/sample/index/1'
 ``` 
 
+Search in Elasticsearch for samples with contain "first" in the name:
 ```
-# Search in Elasticsearch for samples with contain "first" in the name
 curl -XGET 'localhost:9000/sample/search?name=first'
 ``` 
 
+Search documents in Elasticsearch directly where every document matches:
 ```
-# Search documents in Elasticsearch directly where every document matches
 curl -XPOST 'http://search-challange.holidu.com:9200/sample_index/_search?pretty' -d '{
     "query": {
         "match_all": {}
@@ -77,30 +82,26 @@ curl -XPOST 'http://search-challange.holidu.com:9200/sample_index/_search?pretty
 }'
 ```
 
+Search documents in Elasticsearch directly where the name contains "first":
 ```
-# Search documents in Elasticsearch directly where the name contains 'first'
 curl -XPOST 'http://search-challange.holidu.com:9200/sample_index/_search?pretty' -d '{
     "query" : {
         "match": {
             "name": "first"
         }
-    }`
+    }
 }'
 ```
 
 ## Scoring
 
-### Things to keep in mind
-1. Write clean code. Document where ever you feel it is necessary to explain something.
-2. Tests are always welcome ! They put a smile on our face :)
-3. Do not re-invent the wheel.
-4. Simpler is better.
-5. Some major points to remember from the Zen of Python
+Things to keep in mind:
 
-```
-...
-Beautiful is better than ugly.
-Simple is better than complex.
-Complex is better than complicated.
-...
-```
+* Write clean code. Document where ever you feel it is necessary to explain something.
+* Tests are always welcome ! They put a smile on our face 🙂
+* Do not re-invent the wheel.
+* Simpler is better.
+* Some major points to remember from the [Zen of Python](https://www.python.org/dev/peps/pep-0020/)
+    * Beautiful is better than ugly.
+    * Simple is better than complex.
+    * Complex is better than complicated.
