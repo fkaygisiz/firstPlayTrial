@@ -10,3 +10,5 @@ GET         /sample/:id              controllers.SampleController.getById(id:Lon
 POST        /sample                  controllers.SampleController.post()
 
 # Add more routes as you require below
+GET         /apartment/indexAll      controllers.ApartmentController.indexAll()
+GET         /apartment/search        controllers.ApartmentController.search()
