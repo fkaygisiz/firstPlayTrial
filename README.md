@@ -1,4 +1,4 @@
-# Holidu Search Challenge
+# Search Challenge
 
 This challenge is based on a example project provided by play.
 https://github.com/playframework/play-java-ebean-example
@@ -13,11 +13,11 @@ https://github.com/playframework/play-java-ebean-example
 3. After the project is loaded execute `run`
 4. Open `localhost:9000` in your browser
 5. You may be prompted by the apply evolutions screen, simply press `Apply this script now!`. If everything is up 
-and running smoothly, you will see the holidu welcome response
+and running smoothly, you will see the welcome response
 
 ```
 {
-  title: "Holidu Search Challenge",
+  title: "Search Challenge",
   version: "1"
 }
 ```
